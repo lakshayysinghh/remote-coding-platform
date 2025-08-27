@@ -16,7 +16,7 @@ export const getAllInterviews = query({
 export const getMyInterviews = query({
   handler: async (ctx) => {
     const identity = await ctx.auth.getUserIdentity();
-    if (!identity) return [];
+     if (!identity) return [];
 
     const interviews = await ctx.db
       .query("interviews")

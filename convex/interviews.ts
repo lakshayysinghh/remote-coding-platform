@@ -4,9 +4,9 @@ import { v } from "convex/values";
 export const getAllInterviews = query({
   handler: async (ctx) => {
     const identity = await ctx.auth.getUserIdentity();
-    console.log('Identity in getAllInterviews:', identity); 
+    
+   // if (!identity) throw new Error("Unauthorized");
     const interviews = await ctx.db.query("interviews").collect();
-    if (!identity) throw new Error("Unauthorized");
 
 
     return interviews;
@@ -49,7 +49,7 @@ export const createInterview = mutation({
   },
   handler: async (ctx, args) => {
     const identity = await ctx.auth.getUserIdentity();
-    if (!identity) throw new Error("Unauthorized");
+  //  if (!identity) throw new Error("Unauthorized");
 
     return await ctx.db.insert("interviews", {
       ...args,

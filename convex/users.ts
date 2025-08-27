@@ -28,7 +28,7 @@ export const getUsers = query({
     const identity = await ctx.auth.getUserIdentity();
 
     const users = await ctx.db.query("users").collect();
-     if (!identity) throw new Error("User is not authenticated");
+    // if (!identity) throw new Error("User is not authenticated");
 
 
     return users;
